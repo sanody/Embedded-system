@@ -1,17 +1,17 @@
-# Locker system
+#Locker system
 
-###### Main function:
+######Main function:
 Design a hotel room Locker system that enable the guest to put the valuable things in it
 and set a password, this password should never deleted even if the microcontroller
 power is off.
 If user insert 10 zeros the password will back to default value which is 0000.
 
-###### System consists of:
+######System consists of:
 1. Keypad
 2. LCD
 3. Buzzer
 
-###### Details:
+######Details:
 1. Pressing on any button will make the buzzer on for 100msec.
 2. First time password saved is 0000.
 3. User should enter 0000 to open locker at first time.
