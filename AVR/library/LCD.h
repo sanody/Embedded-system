@@ -2,7 +2,7 @@
  * LCD.h
  *
  * Created: 12/2/2021 1:21:08 AM
- *  Author: sch
+ *  Author: Marina
  */ 
 
 
