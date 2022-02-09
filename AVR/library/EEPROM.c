@@ -2,7 +2,7 @@
  * EEPROM.c
  *
  * Created: 12/3/2021 10:35:17 PM
- *  Author: sch
+ *  Author: Marina
  */ 
 
 #include "EEPROM.h"
