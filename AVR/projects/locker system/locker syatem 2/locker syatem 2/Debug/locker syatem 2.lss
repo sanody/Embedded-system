@@ -1,0 +1,1668 @@
+
+locker syatem 2.elf:     file format elf32-avr
+
+Sections:
+Idx Name          Size      VMA       LMA       File off  Algn
+  0 .text         0000095e  00000000  00000000  00000094  2**1
+                  CONTENTS, ALLOC, LOAD, READONLY, CODE
+  1 .data         0000005c  00800060  0000095e  000009f2  2**0
+                  CONTENTS, ALLOC, LOAD, DATA
+  2 .bss          0000000c  008000bc  008000bc  00000a4e  2**0
+                  ALLOC
+  3 .comment      00000030  00000000  00000000  00000a4e  2**0
+                  CONTENTS, READONLY
+  4 .note.gnu.avr.deviceinfo 0000003c  00000000  00000000  00000a80  2**2
+                  CONTENTS, READONLY
+  5 .debug_aranges 00000178  00000000  00000000  00000abc  2**0
+                  CONTENTS, READONLY, DEBUGGING
+  6 .debug_info   00001b7e  00000000  00000000  00000c34  2**0
+                  CONTENTS, READONLY, DEBUGGING
+  7 .debug_abbrev 00000bcb  00000000  00000000  000027b2  2**0
+                  CONTENTS, READONLY, DEBUGGING
+  8 .debug_line   00001175  00000000  00000000  0000337d  2**0
+                  CONTENTS, READONLY, DEBUGGING
+  9 .debug_frame  000003c8  00000000  00000000  000044f4  2**2
+                  CONTENTS, READONLY, DEBUGGING
+ 10 .debug_str    000005c0  00000000  00000000  000048bc  2**0
+                  CONTENTS, READONLY, DEBUGGING
+ 11 .debug_loc    00001564  00000000  00000000  00004e7c  2**0
+                  CONTENTS, READONLY, DEBUGGING
+ 12 .debug_ranges 00000118  00000000  00000000  000063e0  2**0
+                  CONTENTS, READONLY, DEBUGGING
+
+Disassembly of section .text:
+
+00000000 <__vectors>:
+   0:	0c 94 2a 00 	jmp	0x54	; 0x54 <__ctors_end>
+   4:	0c 94 47 00 	jmp	0x8e	; 0x8e <__bad_interrupt>
+   8:	0c 94 47 00 	jmp	0x8e	; 0x8e <__bad_interrupt>
+   c:	0c 94 47 00 	jmp	0x8e	; 0x8e <__bad_interrupt>
+  10:	0c 94 47 00 	jmp	0x8e	; 0x8e <__bad_interrupt>
+  14:	0c 94 47 00 	jmp	0x8e	; 0x8e <__bad_interrupt>
+  18:	0c 94 47 00 	jmp	0x8e	; 0x8e <__bad_interrupt>
+  1c:	0c 94 47 00 	jmp	0x8e	; 0x8e <__bad_interrupt>
+  20:	0c 94 47 00 	jmp	0x8e	; 0x8e <__bad_interrupt>
+  24:	0c 94 47 00 	jmp	0x8e	; 0x8e <__bad_interrupt>
+  28:	0c 94 47 00 	jmp	0x8e	; 0x8e <__bad_interrupt>
+  2c:	0c 94 47 00 	jmp	0x8e	; 0x8e <__bad_interrupt>
+  30:	0c 94 47 00 	jmp	0x8e	; 0x8e <__bad_interrupt>
+  34:	0c 94 47 00 	jmp	0x8e	; 0x8e <__bad_interrupt>
+  38:	0c 94 47 00 	jmp	0x8e	; 0x8e <__bad_interrupt>
+  3c:	0c 94 47 00 	jmp	0x8e	; 0x8e <__bad_interrupt>
+  40:	0c 94 47 00 	jmp	0x8e	; 0x8e <__bad_interrupt>
+  44:	0c 94 47 00 	jmp	0x8e	; 0x8e <__bad_interrupt>
+  48:	0c 94 47 00 	jmp	0x8e	; 0x8e <__bad_interrupt>
+  4c:	0c 94 47 00 	jmp	0x8e	; 0x8e <__bad_interrupt>
+  50:	0c 94 47 00 	jmp	0x8e	; 0x8e <__bad_interrupt>
+
+00000054 <__ctors_end>:
+  54:	11 24       	eor	r1, r1
+  56:	1f be       	out	0x3f, r1	; 63
+  58:	cf e5       	ldi	r28, 0x5F	; 95
+  5a:	d8 e0       	ldi	r29, 0x08	; 8
+  5c:	de bf       	out	0x3e, r29	; 62
+  5e:	cd bf       	out	0x3d, r28	; 61
+
+00000060 <__do_copy_data>:
+  60:	10 e0       	ldi	r17, 0x00	; 0
+  62:	a0 e6       	ldi	r26, 0x60	; 96
+  64:	b0 e0       	ldi	r27, 0x00	; 0
+  66:	ee e5       	ldi	r30, 0x5E	; 94
+  68:	f9 e0       	ldi	r31, 0x09	; 9
+  6a:	02 c0       	rjmp	.+4      	; 0x70 <__do_copy_data+0x10>
+  6c:	05 90       	lpm	r0, Z+
+  6e:	0d 92       	st	X+, r0
+  70:	ac 3b       	cpi	r26, 0xBC	; 188
+  72:	b1 07       	cpc	r27, r17
+  74:	d9 f7       	brne	.-10     	; 0x6c <__do_copy_data+0xc>
+
+00000076 <__do_clear_bss>:
+  76:	20 e0       	ldi	r18, 0x00	; 0
+  78:	ac eb       	ldi	r26, 0xBC	; 188
+  7a:	b0 e0       	ldi	r27, 0x00	; 0
+  7c:	01 c0       	rjmp	.+2      	; 0x80 <.do_clear_bss_start>
+
+0000007e <.do_clear_bss_loop>:
+  7e:	1d 92       	st	X+, r1
+
+00000080 <.do_clear_bss_start>:
+  80:	a8 3c       	cpi	r26, 0xC8	; 200
+  82:	b2 07       	cpc	r27, r18
+  84:	e1 f7       	brne	.-8      	; 0x7e <.do_clear_bss_loop>
+  86:	0e 94 c5 02 	call	0x58a	; 0x58a <main>
+  8a:	0c 94 ad 04 	jmp	0x95a	; 0x95a <_exit>
+
+0000008e <__bad_interrupt>:
+  8e:	0c 94 00 00 	jmp	0	; 0x0 <__vectors>
+
+00000092 <EEPROM_write>:
+		EEPROM_write(num%10 , address+i);
+		i++;
+		num/=10;
+	}
+	EEPROM_write('n' , address+i);
+}
+  92:	e1 99       	sbic	0x1c, 1	; 28
+  94:	fe cf       	rjmp	.-4      	; 0x92 <EEPROM_write>
+  96:	07 b6       	in	r0, 0x37	; 55
+  98:	00 fc       	sbrc	r0, 0
+  9a:	fd cf       	rjmp	.-6      	; 0x96 <EEPROM_write+0x4>
+  9c:	70 e0       	ldi	r23, 0x00	; 0
+  9e:	7f bb       	out	0x1f, r23	; 31
+  a0:	6e bb       	out	0x1e, r22	; 30
+  a2:	8d bb       	out	0x1d, r24	; 29
+  a4:	8c b3       	in	r24, 0x1c	; 28
+  a6:	84 60       	ori	r24, 0x04	; 4
+  a8:	8c bb       	out	0x1c, r24	; 28
+  aa:	8c b3       	in	r24, 0x1c	; 28
+  ac:	82 60       	ori	r24, 0x02	; 2
+  ae:	8c bb       	out	0x1c, r24	; 28
+  b0:	08 95       	ret
+
+000000b2 <EEPROM_write_string>:
+  b2:	0f 93       	push	r16
+  b4:	1f 93       	push	r17
+  b6:	cf 93       	push	r28
+  b8:	df 93       	push	r29
+  ba:	8c 01       	movw	r16, r24
+  bc:	d6 2f       	mov	r29, r22
+  be:	c0 e0       	ldi	r28, 0x00	; 0
+  c0:	05 c0       	rjmp	.+10     	; 0xcc <EEPROM_write_string+0x1a>
+  c2:	6c 2f       	mov	r22, r28
+  c4:	6d 0f       	add	r22, r29
+  c6:	0e 94 49 00 	call	0x92	; 0x92 <EEPROM_write>
+  ca:	cf 5f       	subi	r28, 0xFF	; 255
+  cc:	f8 01       	movw	r30, r16
+  ce:	ec 0f       	add	r30, r28
+  d0:	f1 1d       	adc	r31, r1
+  d2:	80 81       	ld	r24, Z
+  d4:	81 11       	cpse	r24, r1
+  d6:	f5 cf       	rjmp	.-22     	; 0xc2 <EEPROM_write_string+0x10>
+  d8:	6c 2f       	mov	r22, r28
+  da:	6d 0f       	add	r22, r29
+  dc:	0e 94 49 00 	call	0x92	; 0x92 <EEPROM_write>
+  e0:	df 91       	pop	r29
+  e2:	cf 91       	pop	r28
+  e4:	1f 91       	pop	r17
+  e6:	0f 91       	pop	r16
+  e8:	08 95       	ret
+
+000000ea <EEPROM_read>:
+
+uint8_t EEPROM_read(uint8_t address)
+{
+	while(READBIT(EECR,EEWE));
+  ea:	e1 99       	sbic	0x1c, 1	; 28
+  ec:	fe cf       	rjmp	.-4      	; 0xea <EEPROM_read>
+	EEAR = address;
+  ee:	90 e0       	ldi	r25, 0x00	; 0
+  f0:	9f bb       	out	0x1f, r25	; 31
+  f2:	8e bb       	out	0x1e, r24	; 30
+	SETBIT(EECR,EERE);
+  f4:	8c b3       	in	r24, 0x1c	; 28
+  f6:	81 60       	ori	r24, 0x01	; 1
+  f8:	8c bb       	out	0x1c, r24	; 28
+	return EEDR ;
+  fa:	8d b3       	in	r24, 0x1d	; 29
+}
+  fc:	08 95       	ret
+
+000000fe <EEPROM_read_string>:
+
+void EEPROM_read_string(uint8_t *string , uint8_t address)
+{
+  fe:	0f 93       	push	r16
+ 100:	1f 93       	push	r17
+ 102:	cf 93       	push	r28
+ 104:	df 93       	push	r29
+ 106:	8c 01       	movw	r16, r24
+ 108:	d6 2f       	mov	r29, r22
+	uint8_t data = EEPROM_read(address);
+ 10a:	86 2f       	mov	r24, r22
+ 10c:	0e 94 75 00 	call	0xea	; 0xea <EEPROM_read>
+	uint8_t  i   = 0 ;
+ 110:	90 e0       	ldi	r25, 0x00	; 0
+	
+	while(data != 0)
+ 112:	0b c0       	rjmp	.+22     	; 0x12a <EEPROM_read_string+0x2c>
+	{	string[i++] = data;
+ 114:	c1 e0       	ldi	r28, 0x01	; 1
+ 116:	c9 0f       	add	r28, r25
+ 118:	f8 01       	movw	r30, r16
+ 11a:	e9 0f       	add	r30, r25
+ 11c:	f1 1d       	adc	r31, r1
+ 11e:	80 83       	st	Z, r24
+		data = EEPROM_read(address+i);
+ 120:	8d 2f       	mov	r24, r29
+ 122:	8c 0f       	add	r24, r28
+ 124:	0e 94 75 00 	call	0xea	; 0xea <EEPROM_read>
+{
+	uint8_t data = EEPROM_read(address);
+	uint8_t  i   = 0 ;
+	
+	while(data != 0)
+	{	string[i++] = data;
+ 128:	9c 2f       	mov	r25, r28
+void EEPROM_read_string(uint8_t *string , uint8_t address)
+{
+	uint8_t data = EEPROM_read(address);
+	uint8_t  i   = 0 ;
+	
+	while(data != 0)
+ 12a:	81 11       	cpse	r24, r1
+ 12c:	f3 cf       	rjmp	.-26     	; 0x114 <EEPROM_read_string+0x16>
+	{	string[i++] = data;
+		data = EEPROM_read(address+i);
+	}
+	string[i] = data;
+ 12e:	f8 01       	movw	r30, r16
+ 130:	e9 0f       	add	r30, r25
+ 132:	f1 1d       	adc	r31, r1
+ 134:	80 83       	st	Z, r24
+}
+ 136:	df 91       	pop	r29
+ 138:	cf 91       	pop	r28
+ 13a:	1f 91       	pop	r17
+ 13c:	0f 91       	pop	r16
+ 13e:	08 95       	ret
+
+00000140 <KEYPAD_init>:
+
+const uint8_t matrix[] = {'7','8','9','/' , '4','5','6','*' , '1','2','3','-' , 'c','0','=','+' };
+
+void KEYPAD_init(void)
+{
+	KEYBAD_init_();	
+ 140:	81 b3       	in	r24, 0x11	; 17
+ 142:	8f 60       	ori	r24, 0x0F	; 15
+ 144:	81 bb       	out	0x11, r24	; 17
+ 146:	82 b3       	in	r24, 0x12	; 18
+ 148:	80 6f       	ori	r24, 0xF0	; 240
+ 14a:	82 bb       	out	0x12, r24	; 18
+	BUZZER_init();
+ 14c:	8a b3       	in	r24, 0x1a	; 26
+ 14e:	82 60       	ori	r24, 0x02	; 2
+ 150:	8a bb       	out	0x1a, r24	; 26
+ 152:	08 95       	ret
+
+00000154 <KEYPAD_read>:
+}
+
+uint8_t KEYPAD_read(void)
+{
+	uint8_t i = 0 ;
+ 154:	e0 e0       	ldi	r30, 0x00	; 0
+	static uint8_t flag = 0 ;
+
+	for(;i<4;i++)
+ 156:	aa c0       	rjmp	.+340    	; 0x2ac <KEYPAD_read+0x158>
+	{	
+		if(flag == 0 )
+ 158:	80 91 bc 00 	lds	r24, 0x00BC	; 0x8000bc <__data_end>
+ 15c:	81 11       	cpse	r24, r1
+ 15e:	3b c0       	rjmp	.+118    	; 0x1d6 <KEYPAD_read+0x82>
+		{	switch(i)
+ 160:	e1 30       	cpi	r30, 0x01	; 1
+ 162:	99 f0       	breq	.+38     	; 0x18a <KEYPAD_read+0x36>
+ 164:	28 f0       	brcs	.+10     	; 0x170 <KEYPAD_read+0x1c>
+ 166:	e2 30       	cpi	r30, 0x02	; 2
+ 168:	e9 f0       	breq	.+58     	; 0x1a4 <KEYPAD_read+0x50>
+ 16a:	e3 30       	cpi	r30, 0x03	; 3
+ 16c:	41 f1       	breq	.+80     	; 0x1be <KEYPAD_read+0x6a>
+ 16e:	33 c0       	rjmp	.+102    	; 0x1d6 <KEYPAD_read+0x82>
+			{
+				case 0:  KP0(0); KP1(1); KP2(1) ; KP3(1); break;
+ 170:	82 b3       	in	r24, 0x12	; 18
+ 172:	8e 7f       	andi	r24, 0xFE	; 254
+ 174:	82 bb       	out	0x12, r24	; 18
+ 176:	82 b3       	in	r24, 0x12	; 18
+ 178:	82 60       	ori	r24, 0x02	; 2
+ 17a:	82 bb       	out	0x12, r24	; 18
+ 17c:	82 b3       	in	r24, 0x12	; 18
+ 17e:	84 60       	ori	r24, 0x04	; 4
+ 180:	82 bb       	out	0x12, r24	; 18
+ 182:	82 b3       	in	r24, 0x12	; 18
+ 184:	88 60       	ori	r24, 0x08	; 8
+ 186:	82 bb       	out	0x12, r24	; 18
+ 188:	26 c0       	rjmp	.+76     	; 0x1d6 <KEYPAD_read+0x82>
+				case 1:  KP0(1); KP1(0); KP2(1) ; KP3(1); break;
+ 18a:	82 b3       	in	r24, 0x12	; 18
+ 18c:	81 60       	ori	r24, 0x01	; 1
+ 18e:	82 bb       	out	0x12, r24	; 18
+ 190:	82 b3       	in	r24, 0x12	; 18
+ 192:	8d 7f       	andi	r24, 0xFD	; 253
+ 194:	82 bb       	out	0x12, r24	; 18
+ 196:	82 b3       	in	r24, 0x12	; 18
+ 198:	84 60       	ori	r24, 0x04	; 4
+ 19a:	82 bb       	out	0x12, r24	; 18
+ 19c:	82 b3       	in	r24, 0x12	; 18
+ 19e:	88 60       	ori	r24, 0x08	; 8
+ 1a0:	82 bb       	out	0x12, r24	; 18
+ 1a2:	19 c0       	rjmp	.+50     	; 0x1d6 <KEYPAD_read+0x82>
+				case 2:  KP0(1); KP1(1); KP2(0) ; KP3(1); break;
+ 1a4:	82 b3       	in	r24, 0x12	; 18
+ 1a6:	81 60       	ori	r24, 0x01	; 1
+ 1a8:	82 bb       	out	0x12, r24	; 18
+ 1aa:	82 b3       	in	r24, 0x12	; 18
+ 1ac:	82 60       	ori	r24, 0x02	; 2
+ 1ae:	82 bb       	out	0x12, r24	; 18
+ 1b0:	82 b3       	in	r24, 0x12	; 18
+ 1b2:	8b 7f       	andi	r24, 0xFB	; 251
+ 1b4:	82 bb       	out	0x12, r24	; 18
+ 1b6:	82 b3       	in	r24, 0x12	; 18
+ 1b8:	88 60       	ori	r24, 0x08	; 8
+ 1ba:	82 bb       	out	0x12, r24	; 18
+ 1bc:	0c c0       	rjmp	.+24     	; 0x1d6 <KEYPAD_read+0x82>
+				case 3:  KP0(1); KP1(1); KP2(1) ; KP3(0); break;
+ 1be:	82 b3       	in	r24, 0x12	; 18
+ 1c0:	81 60       	ori	r24, 0x01	; 1
+ 1c2:	82 bb       	out	0x12, r24	; 18
+ 1c4:	82 b3       	in	r24, 0x12	; 18
+ 1c6:	82 60       	ori	r24, 0x02	; 2
+ 1c8:	82 bb       	out	0x12, r24	; 18
+ 1ca:	82 b3       	in	r24, 0x12	; 18
+ 1cc:	84 60       	ori	r24, 0x04	; 4
+ 1ce:	82 bb       	out	0x12, r24	; 18
+ 1d0:	82 b3       	in	r24, 0x12	; 18
+ 1d2:	87 7f       	andi	r24, 0xF7	; 247
+ 1d4:	82 bb       	out	0x12, r24	; 18
+			}
+		}
+		if((KP4 == 0)&&(flag == 0)) { flag = 1 ; return matrix[ 0 + i*4 ] ;}
+ 1d6:	84 99       	sbic	0x10, 4	; 16
+ 1d8:	10 c0       	rjmp	.+32     	; 0x1fa <KEYPAD_read+0xa6>
+ 1da:	80 91 bc 00 	lds	r24, 0x00BC	; 0x8000bc <__data_end>
+ 1de:	81 11       	cpse	r24, r1
+ 1e0:	0c c0       	rjmp	.+24     	; 0x1fa <KEYPAD_read+0xa6>
+ 1e2:	81 e0       	ldi	r24, 0x01	; 1
+ 1e4:	80 93 bc 00 	sts	0x00BC, r24	; 0x8000bc <__data_end>
+ 1e8:	f0 e0       	ldi	r31, 0x00	; 0
+ 1ea:	ee 0f       	add	r30, r30
+ 1ec:	ff 1f       	adc	r31, r31
+ 1ee:	ee 0f       	add	r30, r30
+ 1f0:	ff 1f       	adc	r31, r31
+ 1f2:	e0 5a       	subi	r30, 0xA0	; 160
+ 1f4:	ff 4f       	sbci	r31, 0xFF	; 255
+ 1f6:	80 81       	ld	r24, Z
+ 1f8:	08 95       	ret
+		if((KP5 == 0)&&(flag == 0)) { flag = 1 ; return matrix[ 1 + i*4 ] ;}
+ 1fa:	85 99       	sbic	0x10, 5	; 16
+ 1fc:	10 c0       	rjmp	.+32     	; 0x21e <KEYPAD_read+0xca>
+ 1fe:	80 91 bc 00 	lds	r24, 0x00BC	; 0x8000bc <__data_end>
+ 202:	81 11       	cpse	r24, r1
+ 204:	0c c0       	rjmp	.+24     	; 0x21e <KEYPAD_read+0xca>
+ 206:	81 e0       	ldi	r24, 0x01	; 1
+ 208:	80 93 bc 00 	sts	0x00BC, r24	; 0x8000bc <__data_end>
+ 20c:	f0 e0       	ldi	r31, 0x00	; 0
+ 20e:	ee 0f       	add	r30, r30
+ 210:	ff 1f       	adc	r31, r31
+ 212:	ee 0f       	add	r30, r30
+ 214:	ff 1f       	adc	r31, r31
+ 216:	ef 59       	subi	r30, 0x9F	; 159
+ 218:	ff 4f       	sbci	r31, 0xFF	; 255
+ 21a:	80 81       	ld	r24, Z
+ 21c:	08 95       	ret
+		if((KP6 == 0)&&(flag == 0)) { flag = 1 ; return matrix[ 2 + i*4 ] ;}
+ 21e:	86 99       	sbic	0x10, 6	; 16
+ 220:	10 c0       	rjmp	.+32     	; 0x242 <KEYPAD_read+0xee>
+ 222:	80 91 bc 00 	lds	r24, 0x00BC	; 0x8000bc <__data_end>
+ 226:	81 11       	cpse	r24, r1
+ 228:	0c c0       	rjmp	.+24     	; 0x242 <KEYPAD_read+0xee>
+ 22a:	81 e0       	ldi	r24, 0x01	; 1
+ 22c:	80 93 bc 00 	sts	0x00BC, r24	; 0x8000bc <__data_end>
+ 230:	f0 e0       	ldi	r31, 0x00	; 0
+ 232:	ee 0f       	add	r30, r30
+ 234:	ff 1f       	adc	r31, r31
+ 236:	ee 0f       	add	r30, r30
+ 238:	ff 1f       	adc	r31, r31
+ 23a:	ee 59       	subi	r30, 0x9E	; 158
+ 23c:	ff 4f       	sbci	r31, 0xFF	; 255
+ 23e:	80 81       	ld	r24, Z
+ 240:	08 95       	ret
+		if((KP7 == 0)&&(flag == 0)) { flag = 1 ; return matrix[ 3 + i*4 ] ;}		 
+ 242:	87 99       	sbic	0x10, 7	; 16
+ 244:	10 c0       	rjmp	.+32     	; 0x266 <KEYPAD_read+0x112>
+ 246:	80 91 bc 00 	lds	r24, 0x00BC	; 0x8000bc <__data_end>
+ 24a:	81 11       	cpse	r24, r1
+ 24c:	0c c0       	rjmp	.+24     	; 0x266 <KEYPAD_read+0x112>
+ 24e:	81 e0       	ldi	r24, 0x01	; 1
+ 250:	80 93 bc 00 	sts	0x00BC, r24	; 0x8000bc <__data_end>
+ 254:	f0 e0       	ldi	r31, 0x00	; 0
+ 256:	ee 0f       	add	r30, r30
+ 258:	ff 1f       	adc	r31, r31
+ 25a:	ee 0f       	add	r30, r30
+ 25c:	ff 1f       	adc	r31, r31
+ 25e:	ed 59       	subi	r30, 0x9D	; 157
+ 260:	ff 4f       	sbci	r31, 0xFF	; 255
+ 262:	80 81       	ld	r24, Z
+ 264:	08 95       	ret
+		
+		if(flag)
+ 266:	80 91 bc 00 	lds	r24, 0x00BC	; 0x8000bc <__data_end>
+ 26a:	88 23       	and	r24, r24
+ 26c:	79 f0       	breq	.+30     	; 0x28c <KEYPAD_read+0x138>
+		{
+			BUZZER(1);
+ 26e:	8b b3       	in	r24, 0x1b	; 27
+ 270:	82 60       	ori	r24, 0x02	; 2
+ 272:	8b bb       	out	0x1b, r24	; 27
+	#else
+		//round up by default
+		__ticks_dc = (uint32_t)(ceil(fabs(__tmp)));
+	#endif
+
+	__builtin_avr_delay_cycles(__ticks_dc);
+ 274:	2f ef       	ldi	r18, 0xFF	; 255
+ 276:	80 e7       	ldi	r24, 0x70	; 112
+ 278:	92 e0       	ldi	r25, 0x02	; 2
+ 27a:	21 50       	subi	r18, 0x01	; 1
+ 27c:	80 40       	sbci	r24, 0x00	; 0
+ 27e:	90 40       	sbci	r25, 0x00	; 0
+ 280:	e1 f7       	brne	.-8      	; 0x27a <KEYPAD_read+0x126>
+ 282:	00 c0       	rjmp	.+0      	; 0x284 <KEYPAD_read+0x130>
+ 284:	00 00       	nop
+			_delay_ms(100);
+			BUZZER(0);
+ 286:	8b b3       	in	r24, 0x1b	; 27
+ 288:	8d 7f       	andi	r24, 0xFD	; 253
+ 28a:	8b bb       	out	0x1b, r24	; 27
+		}
+		if((KP4 == 1) && (KP5 == 1) && (KP6 == 1) && (KP7 == 1))
+ 28c:	84 9b       	sbis	0x10, 4	; 16
+ 28e:	07 c0       	rjmp	.+14     	; 0x29e <KEYPAD_read+0x14a>
+ 290:	85 9b       	sbis	0x10, 5	; 16
+ 292:	05 c0       	rjmp	.+10     	; 0x29e <KEYPAD_read+0x14a>
+ 294:	86 9b       	sbis	0x10, 6	; 16
+ 296:	03 c0       	rjmp	.+6      	; 0x29e <KEYPAD_read+0x14a>
+ 298:	87 99       	sbic	0x10, 7	; 16
+			flag = 0;
+ 29a:	10 92 bc 00 	sts	0x00BC, r1	; 0x8000bc <__data_end>
+ 29e:	8f ec       	ldi	r24, 0xCF	; 207
+ 2a0:	97 e0       	ldi	r25, 0x07	; 7
+ 2a2:	01 97       	sbiw	r24, 0x01	; 1
+ 2a4:	f1 f7       	brne	.-4      	; 0x2a2 <KEYPAD_read+0x14e>
+ 2a6:	00 c0       	rjmp	.+0      	; 0x2a8 <KEYPAD_read+0x154>
+ 2a8:	00 00       	nop
+uint8_t KEYPAD_read(void)
+{
+	uint8_t i = 0 ;
+	static uint8_t flag = 0 ;
+
+	for(;i<4;i++)
+ 2aa:	ef 5f       	subi	r30, 0xFF	; 255
+ 2ac:	e4 30       	cpi	r30, 0x04	; 4
+ 2ae:	08 f4       	brcc	.+2      	; 0x2b2 <KEYPAD_read+0x15e>
+ 2b0:	53 cf       	rjmp	.-346    	; 0x158 <KEYPAD_read+0x4>
+		if((KP4 == 1) && (KP5 == 1) && (KP6 == 1) && (KP7 == 1))
+			flag = 0;
+		
+		_delay_ms(1);
+	}
+	return '@';
+ 2b2:	80 e4       	ldi	r24, 0x40	; 64
+}
+ 2b4:	08 95       	ret
+
+000002b6 <LCD_write_command>:
+		_delay_ms(1);
+}
+
+void LCD_write_command(uint8_t com)
+{
+	RS(0);
+ 2b6:	95 b3       	in	r25, 0x15	; 21
+ 2b8:	9e 7f       	andi	r25, 0xFE	; 254
+ 2ba:	95 bb       	out	0x15, r25	; 21
+	D4(READBIT(com,4));
+ 2bc:	84 ff       	sbrs	r24, 4
+ 2be:	04 c0       	rjmp	.+8      	; 0x2c8 <LCD_write_command+0x12>
+ 2c0:	95 b3       	in	r25, 0x15	; 21
+ 2c2:	94 60       	ori	r25, 0x04	; 4
+ 2c4:	95 bb       	out	0x15, r25	; 21
+ 2c6:	03 c0       	rjmp	.+6      	; 0x2ce <LCD_write_command+0x18>
+ 2c8:	95 b3       	in	r25, 0x15	; 21
+ 2ca:	9b 7f       	andi	r25, 0xFB	; 251
+ 2cc:	95 bb       	out	0x15, r25	; 21
+	D5(READBIT(com,5));
+ 2ce:	85 ff       	sbrs	r24, 5
+ 2d0:	04 c0       	rjmp	.+8      	; 0x2da <LCD_write_command+0x24>
+ 2d2:	95 b3       	in	r25, 0x15	; 21
+ 2d4:	98 60       	ori	r25, 0x08	; 8
+ 2d6:	95 bb       	out	0x15, r25	; 21
+ 2d8:	03 c0       	rjmp	.+6      	; 0x2e0 <LCD_write_command+0x2a>
+ 2da:	95 b3       	in	r25, 0x15	; 21
+ 2dc:	97 7f       	andi	r25, 0xF7	; 247
+ 2de:	95 bb       	out	0x15, r25	; 21
+	D6(READBIT(com,6));
+ 2e0:	86 ff       	sbrs	r24, 6
+ 2e2:	04 c0       	rjmp	.+8      	; 0x2ec <LCD_write_command+0x36>
+ 2e4:	95 b3       	in	r25, 0x15	; 21
+ 2e6:	90 61       	ori	r25, 0x10	; 16
+ 2e8:	95 bb       	out	0x15, r25	; 21
+ 2ea:	03 c0       	rjmp	.+6      	; 0x2f2 <LCD_write_command+0x3c>
+ 2ec:	95 b3       	in	r25, 0x15	; 21
+ 2ee:	9f 7e       	andi	r25, 0xEF	; 239
+ 2f0:	95 bb       	out	0x15, r25	; 21
+	D7(READBIT(com,7));
+ 2f2:	88 23       	and	r24, r24
+ 2f4:	24 f4       	brge	.+8      	; 0x2fe <LCD_write_command+0x48>
+ 2f6:	95 b3       	in	r25, 0x15	; 21
+ 2f8:	90 62       	ori	r25, 0x20	; 32
+ 2fa:	95 bb       	out	0x15, r25	; 21
+ 2fc:	03 c0       	rjmp	.+6      	; 0x304 <LCD_write_command+0x4e>
+ 2fe:	95 b3       	in	r25, 0x15	; 21
+ 300:	9f 7d       	andi	r25, 0xDF	; 223
+ 302:	95 bb       	out	0x15, r25	; 21
+	EN(1);
+ 304:	95 b3       	in	r25, 0x15	; 21
+ 306:	92 60       	ori	r25, 0x02	; 2
+ 308:	95 bb       	out	0x15, r25	; 21
+ 30a:	ef ec       	ldi	r30, 0xCF	; 207
+ 30c:	f7 e0       	ldi	r31, 0x07	; 7
+ 30e:	31 97       	sbiw	r30, 0x01	; 1
+ 310:	f1 f7       	brne	.-4      	; 0x30e <LCD_write_command+0x58>
+ 312:	00 c0       	rjmp	.+0      	; 0x314 <LCD_write_command+0x5e>
+ 314:	00 00       	nop
+	_delay_ms(1);
+	EN(0);
+ 316:	95 b3       	in	r25, 0x15	; 21
+ 318:	9d 7f       	andi	r25, 0xFD	; 253
+ 31a:	95 bb       	out	0x15, r25	; 21
+ 31c:	ef ec       	ldi	r30, 0xCF	; 207
+ 31e:	f7 e0       	ldi	r31, 0x07	; 7
+ 320:	31 97       	sbiw	r30, 0x01	; 1
+ 322:	f1 f7       	brne	.-4      	; 0x320 <LCD_write_command+0x6a>
+ 324:	00 c0       	rjmp	.+0      	; 0x326 <LCD_write_command+0x70>
+ 326:	00 00       	nop
+	_delay_ms(1);
+	
+	
+	D4(READBIT(com,0));
+ 328:	80 ff       	sbrs	r24, 0
+ 32a:	04 c0       	rjmp	.+8      	; 0x334 <LCD_write_command+0x7e>
+ 32c:	95 b3       	in	r25, 0x15	; 21
+ 32e:	94 60       	ori	r25, 0x04	; 4
+ 330:	95 bb       	out	0x15, r25	; 21
+ 332:	03 c0       	rjmp	.+6      	; 0x33a <LCD_write_command+0x84>
+ 334:	95 b3       	in	r25, 0x15	; 21
+ 336:	9b 7f       	andi	r25, 0xFB	; 251
+ 338:	95 bb       	out	0x15, r25	; 21
+	D5(READBIT(com,1));
+ 33a:	81 ff       	sbrs	r24, 1
+ 33c:	04 c0       	rjmp	.+8      	; 0x346 <LCD_write_command+0x90>
+ 33e:	95 b3       	in	r25, 0x15	; 21
+ 340:	98 60       	ori	r25, 0x08	; 8
+ 342:	95 bb       	out	0x15, r25	; 21
+ 344:	03 c0       	rjmp	.+6      	; 0x34c <LCD_write_command+0x96>
+ 346:	95 b3       	in	r25, 0x15	; 21
+ 348:	97 7f       	andi	r25, 0xF7	; 247
+ 34a:	95 bb       	out	0x15, r25	; 21
+	D6(READBIT(com,2));
+ 34c:	82 ff       	sbrs	r24, 2
+ 34e:	04 c0       	rjmp	.+8      	; 0x358 <LCD_write_command+0xa2>
+ 350:	95 b3       	in	r25, 0x15	; 21
+ 352:	90 61       	ori	r25, 0x10	; 16
+ 354:	95 bb       	out	0x15, r25	; 21
+ 356:	03 c0       	rjmp	.+6      	; 0x35e <LCD_write_command+0xa8>
+ 358:	95 b3       	in	r25, 0x15	; 21
+ 35a:	9f 7e       	andi	r25, 0xEF	; 239
+ 35c:	95 bb       	out	0x15, r25	; 21
+	D7(READBIT(com,3));
+ 35e:	83 ff       	sbrs	r24, 3
+ 360:	04 c0       	rjmp	.+8      	; 0x36a <LCD_write_command+0xb4>
+ 362:	85 b3       	in	r24, 0x15	; 21
+ 364:	80 62       	ori	r24, 0x20	; 32
+ 366:	85 bb       	out	0x15, r24	; 21
+ 368:	03 c0       	rjmp	.+6      	; 0x370 <LCD_write_command+0xba>
+ 36a:	85 b3       	in	r24, 0x15	; 21
+ 36c:	8f 7d       	andi	r24, 0xDF	; 223
+ 36e:	85 bb       	out	0x15, r24	; 21
+	EN(1);
+ 370:	85 b3       	in	r24, 0x15	; 21
+ 372:	82 60       	ori	r24, 0x02	; 2
+ 374:	85 bb       	out	0x15, r24	; 21
+ 376:	8f ec       	ldi	r24, 0xCF	; 207
+ 378:	97 e0       	ldi	r25, 0x07	; 7
+ 37a:	01 97       	sbiw	r24, 0x01	; 1
+ 37c:	f1 f7       	brne	.-4      	; 0x37a <LCD_write_command+0xc4>
+ 37e:	00 c0       	rjmp	.+0      	; 0x380 <LCD_write_command+0xca>
+ 380:	00 00       	nop
+	_delay_ms(1);
+	EN(0);
+ 382:	85 b3       	in	r24, 0x15	; 21
+ 384:	8d 7f       	andi	r24, 0xFD	; 253
+ 386:	85 bb       	out	0x15, r24	; 21
+ 388:	ef ec       	ldi	r30, 0xCF	; 207
+ 38a:	f7 e0       	ldi	r31, 0x07	; 7
+ 38c:	31 97       	sbiw	r30, 0x01	; 1
+ 38e:	f1 f7       	brne	.-4      	; 0x38c <LCD_write_command+0xd6>
+ 390:	00 c0       	rjmp	.+0      	; 0x392 <LCD_write_command+0xdc>
+ 392:	00 00       	nop
+ 394:	08 95       	ret
+
+00000396 <LCD_init>:
+
+#include "LCD.h"
+
+void LCD_init(void)
+{
+	LCD_init_();
+ 396:	84 b3       	in	r24, 0x14	; 20
+ 398:	8f 63       	ori	r24, 0x3F	; 63
+ 39a:	84 bb       	out	0x14, r24	; 20
+		
+	LCD_write_command(0x3);
+ 39c:	83 e0       	ldi	r24, 0x03	; 3
+ 39e:	0e 94 5b 01 	call	0x2b6	; 0x2b6 <LCD_write_command>
+ 3a2:	8f e6       	ldi	r24, 0x6F	; 111
+ 3a4:	97 e1       	ldi	r25, 0x17	; 23
+ 3a6:	01 97       	sbiw	r24, 0x01	; 1
+ 3a8:	f1 f7       	brne	.-4      	; 0x3a6 <LCD_init+0x10>
+ 3aa:	00 c0       	rjmp	.+0      	; 0x3ac <LCD_init+0x16>
+ 3ac:	00 00       	nop
+	_delay_ms(3);
+	LCD_write_command(0x3);
+ 3ae:	83 e0       	ldi	r24, 0x03	; 3
+ 3b0:	0e 94 5b 01 	call	0x2b6	; 0x2b6 <LCD_write_command>
+ 3b4:	8f e6       	ldi	r24, 0x6F	; 111
+ 3b6:	97 e1       	ldi	r25, 0x17	; 23
+ 3b8:	01 97       	sbiw	r24, 0x01	; 1
+ 3ba:	f1 f7       	brne	.-4      	; 0x3b8 <LCD_init+0x22>
+ 3bc:	00 c0       	rjmp	.+0      	; 0x3be <LCD_init+0x28>
+ 3be:	00 00       	nop
+	_delay_ms(3);
+	LCD_write_command(0x3);
+ 3c0:	83 e0       	ldi	r24, 0x03	; 3
+ 3c2:	0e 94 5b 01 	call	0x2b6	; 0x2b6 <LCD_write_command>
+ 3c6:	8f e6       	ldi	r24, 0x6F	; 111
+ 3c8:	97 e1       	ldi	r25, 0x17	; 23
+ 3ca:	01 97       	sbiw	r24, 0x01	; 1
+ 3cc:	f1 f7       	brne	.-4      	; 0x3ca <LCD_init+0x34>
+ 3ce:	00 c0       	rjmp	.+0      	; 0x3d0 <LCD_init+0x3a>
+ 3d0:	00 00       	nop
+	_delay_ms(3);
+	LCD_write_command(0x2); // enable 4 bit mode
+ 3d2:	82 e0       	ldi	r24, 0x02	; 2
+ 3d4:	0e 94 5b 01 	call	0x2b6	; 0x2b6 <LCD_write_command>
+	LCD_write_command(0x28);
+ 3d8:	88 e2       	ldi	r24, 0x28	; 40
+ 3da:	0e 94 5b 01 	call	0x2b6	; 0x2b6 <LCD_write_command>
+	LCD_write_command(0x08);
+ 3de:	88 e0       	ldi	r24, 0x08	; 8
+ 3e0:	0e 94 5b 01 	call	0x2b6	; 0x2b6 <LCD_write_command>
+	LCD_write_command(0x01); // Clear display
+ 3e4:	81 e0       	ldi	r24, 0x01	; 1
+ 3e6:	0e 94 5b 01 	call	0x2b6	; 0x2b6 <LCD_write_command>
+	LCD_write_command(0x06); // to make courser increment to right
+ 3ea:	86 e0       	ldi	r24, 0x06	; 6
+ 3ec:	0e 94 5b 01 	call	0x2b6	; 0x2b6 <LCD_write_command>
+	LCD_write_command(0x0C); // to turn on the display
+ 3f0:	8c e0       	ldi	r24, 0x0C	; 12
+ 3f2:	0e 94 5b 01 	call	0x2b6	; 0x2b6 <LCD_write_command>
+ 3f6:	8f e3       	ldi	r24, 0x3F	; 63
+ 3f8:	9c e9       	ldi	r25, 0x9C	; 156
+ 3fa:	01 97       	sbiw	r24, 0x01	; 1
+ 3fc:	f1 f7       	brne	.-4      	; 0x3fa <LCD_init+0x64>
+ 3fe:	00 c0       	rjmp	.+0      	; 0x400 <__EEPROM_REGION_LENGTH__>
+ 400:	00 00       	nop
+ 402:	08 95       	ret
+
+00000404 <LCD_clear>:
+	_delay_ms(20);
+}
+
+void LCD_clear(void)
+{
+	LCD_write_command(0x1);
+ 404:	81 e0       	ldi	r24, 0x01	; 1
+ 406:	0e 94 5b 01 	call	0x2b6	; 0x2b6 <LCD_write_command>
+	LCD_write_command(0x80);
+ 40a:	80 e8       	ldi	r24, 0x80	; 128
+ 40c:	0e 94 5b 01 	call	0x2b6	; 0x2b6 <LCD_write_command>
+ 410:	2f ef       	ldi	r18, 0xFF	; 255
+ 412:	80 e7       	ldi	r24, 0x70	; 112
+ 414:	92 e0       	ldi	r25, 0x02	; 2
+ 416:	21 50       	subi	r18, 0x01	; 1
+ 418:	80 40       	sbci	r24, 0x00	; 0
+ 41a:	90 40       	sbci	r25, 0x00	; 0
+ 41c:	e1 f7       	brne	.-8      	; 0x416 <LCD_clear+0x12>
+ 41e:	00 c0       	rjmp	.+0      	; 0x420 <LCD_clear+0x1c>
+ 420:	00 00       	nop
+ 422:	08 95       	ret
+
+00000424 <LCD_postion>:
+	_delay_ms(1);
+}
+
+void LCD_postion(uint8_t row,uint8_t col)
+{
+	if(row == 1)
+ 424:	81 30       	cpi	r24, 0x01	; 1
+ 426:	29 f4       	brne	.+10     	; 0x432 <LCD_postion+0xe>
+		LCD_write_command(0x80+col-1);
+ 428:	8f e7       	ldi	r24, 0x7F	; 127
+ 42a:	86 0f       	add	r24, r22
+ 42c:	0e 94 5b 01 	call	0x2b6	; 0x2b6 <LCD_write_command>
+ 430:	06 c0       	rjmp	.+12     	; 0x43e <LCD_postion+0x1a>
+	else if(row == 2)
+ 432:	82 30       	cpi	r24, 0x02	; 2
+ 434:	21 f4       	brne	.+8      	; 0x43e <LCD_postion+0x1a>
+		LCD_write_command(0xC0+col-1);
+ 436:	8f eb       	ldi	r24, 0xBF	; 191
+ 438:	86 0f       	add	r24, r22
+ 43a:	0e 94 5b 01 	call	0x2b6	; 0x2b6 <LCD_write_command>
+ 43e:	2f ef       	ldi	r18, 0xFF	; 255
+ 440:	80 e7       	ldi	r24, 0x70	; 112
+ 442:	92 e0       	ldi	r25, 0x02	; 2
+ 444:	21 50       	subi	r18, 0x01	; 1
+ 446:	80 40       	sbci	r24, 0x00	; 0
+ 448:	90 40       	sbci	r25, 0x00	; 0
+ 44a:	e1 f7       	brne	.-8      	; 0x444 <LCD_postion+0x20>
+ 44c:	00 c0       	rjmp	.+0      	; 0x44e <LCD_postion+0x2a>
+ 44e:	00 00       	nop
+ 450:	08 95       	ret
+
+00000452 <LCD_write_char>:
+	LCD_write_command(0x80);
+	_delay_ms(100);	
+}
+
+void LCD_write_char(uint8_t data, uint8_t row , uint8_t col)
+{
+ 452:	cf 93       	push	r28
+ 454:	c8 2f       	mov	r28, r24
+ 456:	86 2f       	mov	r24, r22
+		LCD_postion(row,col);
+ 458:	64 2f       	mov	r22, r20
+ 45a:	0e 94 12 02 	call	0x424	; 0x424 <LCD_postion>
+ 45e:	2f ef       	ldi	r18, 0xFF	; 255
+ 460:	80 e7       	ldi	r24, 0x70	; 112
+ 462:	92 e0       	ldi	r25, 0x02	; 2
+ 464:	21 50       	subi	r18, 0x01	; 1
+ 466:	80 40       	sbci	r24, 0x00	; 0
+ 468:	90 40       	sbci	r25, 0x00	; 0
+ 46a:	e1 f7       	brne	.-8      	; 0x464 <LCD_write_char+0x12>
+ 46c:	00 c0       	rjmp	.+0      	; 0x46e <LCD_write_char+0x1c>
+ 46e:	00 00       	nop
+		_delay_ms(100);
+		RS(1);
+ 470:	85 b3       	in	r24, 0x15	; 21
+ 472:	81 60       	ori	r24, 0x01	; 1
+ 474:	85 bb       	out	0x15, r24	; 21
+		D4(READBIT(data,4));
+ 476:	c4 ff       	sbrs	r28, 4
+ 478:	04 c0       	rjmp	.+8      	; 0x482 <LCD_write_char+0x30>
+ 47a:	85 b3       	in	r24, 0x15	; 21
+ 47c:	84 60       	ori	r24, 0x04	; 4
+ 47e:	85 bb       	out	0x15, r24	; 21
+ 480:	03 c0       	rjmp	.+6      	; 0x488 <LCD_write_char+0x36>
+ 482:	85 b3       	in	r24, 0x15	; 21
+ 484:	8b 7f       	andi	r24, 0xFB	; 251
+ 486:	85 bb       	out	0x15, r24	; 21
+		D5(READBIT(data,5));
+ 488:	c5 ff       	sbrs	r28, 5
+ 48a:	04 c0       	rjmp	.+8      	; 0x494 <LCD_write_char+0x42>
+ 48c:	85 b3       	in	r24, 0x15	; 21
+ 48e:	88 60       	ori	r24, 0x08	; 8
+ 490:	85 bb       	out	0x15, r24	; 21
+ 492:	03 c0       	rjmp	.+6      	; 0x49a <LCD_write_char+0x48>
+ 494:	85 b3       	in	r24, 0x15	; 21
+ 496:	87 7f       	andi	r24, 0xF7	; 247
+ 498:	85 bb       	out	0x15, r24	; 21
+		D6(READBIT(data,6));
+ 49a:	c6 ff       	sbrs	r28, 6
+ 49c:	04 c0       	rjmp	.+8      	; 0x4a6 <LCD_write_char+0x54>
+ 49e:	85 b3       	in	r24, 0x15	; 21
+ 4a0:	80 61       	ori	r24, 0x10	; 16
+ 4a2:	85 bb       	out	0x15, r24	; 21
+ 4a4:	03 c0       	rjmp	.+6      	; 0x4ac <LCD_write_char+0x5a>
+ 4a6:	85 b3       	in	r24, 0x15	; 21
+ 4a8:	8f 7e       	andi	r24, 0xEF	; 239
+ 4aa:	85 bb       	out	0x15, r24	; 21
+		D7(READBIT(data,7));
+ 4ac:	cc 23       	and	r28, r28
+ 4ae:	24 f4       	brge	.+8      	; 0x4b8 <LCD_write_char+0x66>
+ 4b0:	85 b3       	in	r24, 0x15	; 21
+ 4b2:	80 62       	ori	r24, 0x20	; 32
+ 4b4:	85 bb       	out	0x15, r24	; 21
+ 4b6:	03 c0       	rjmp	.+6      	; 0x4be <LCD_write_char+0x6c>
+ 4b8:	85 b3       	in	r24, 0x15	; 21
+ 4ba:	8f 7d       	andi	r24, 0xDF	; 223
+ 4bc:	85 bb       	out	0x15, r24	; 21
+		EN(1);
+ 4be:	85 b3       	in	r24, 0x15	; 21
+ 4c0:	82 60       	ori	r24, 0x02	; 2
+ 4c2:	85 bb       	out	0x15, r24	; 21
+ 4c4:	8f ec       	ldi	r24, 0xCF	; 207
+ 4c6:	97 e0       	ldi	r25, 0x07	; 7
+ 4c8:	01 97       	sbiw	r24, 0x01	; 1
+ 4ca:	f1 f7       	brne	.-4      	; 0x4c8 <LCD_write_char+0x76>
+ 4cc:	00 c0       	rjmp	.+0      	; 0x4ce <LCD_write_char+0x7c>
+ 4ce:	00 00       	nop
+		_delay_ms(1);
+		EN(0);
+ 4d0:	85 b3       	in	r24, 0x15	; 21
+ 4d2:	8d 7f       	andi	r24, 0xFD	; 253
+ 4d4:	85 bb       	out	0x15, r24	; 21
+ 4d6:	8f ec       	ldi	r24, 0xCF	; 207
+ 4d8:	97 e0       	ldi	r25, 0x07	; 7
+ 4da:	01 97       	sbiw	r24, 0x01	; 1
+ 4dc:	f1 f7       	brne	.-4      	; 0x4da <LCD_write_char+0x88>
+ 4de:	00 c0       	rjmp	.+0      	; 0x4e0 <LCD_write_char+0x8e>
+ 4e0:	00 00       	nop
+		_delay_ms(1);
+		
+		
+		D4(READBIT(data,0));
+ 4e2:	c0 ff       	sbrs	r28, 0
+ 4e4:	04 c0       	rjmp	.+8      	; 0x4ee <LCD_write_char+0x9c>
+ 4e6:	85 b3       	in	r24, 0x15	; 21
+ 4e8:	84 60       	ori	r24, 0x04	; 4
+ 4ea:	85 bb       	out	0x15, r24	; 21
+ 4ec:	03 c0       	rjmp	.+6      	; 0x4f4 <LCD_write_char+0xa2>
+ 4ee:	85 b3       	in	r24, 0x15	; 21
+ 4f0:	8b 7f       	andi	r24, 0xFB	; 251
+ 4f2:	85 bb       	out	0x15, r24	; 21
+		D5(READBIT(data,1));
+ 4f4:	c1 ff       	sbrs	r28, 1
+ 4f6:	04 c0       	rjmp	.+8      	; 0x500 <LCD_write_char+0xae>
+ 4f8:	85 b3       	in	r24, 0x15	; 21
+ 4fa:	88 60       	ori	r24, 0x08	; 8
+ 4fc:	85 bb       	out	0x15, r24	; 21
+ 4fe:	03 c0       	rjmp	.+6      	; 0x506 <LCD_write_char+0xb4>
+ 500:	85 b3       	in	r24, 0x15	; 21
+ 502:	87 7f       	andi	r24, 0xF7	; 247
+ 504:	85 bb       	out	0x15, r24	; 21
+		D6(READBIT(data,2));
+ 506:	c2 ff       	sbrs	r28, 2
+ 508:	04 c0       	rjmp	.+8      	; 0x512 <LCD_write_char+0xc0>
+ 50a:	85 b3       	in	r24, 0x15	; 21
+ 50c:	80 61       	ori	r24, 0x10	; 16
+ 50e:	85 bb       	out	0x15, r24	; 21
+ 510:	03 c0       	rjmp	.+6      	; 0x518 <LCD_write_char+0xc6>
+ 512:	85 b3       	in	r24, 0x15	; 21
+ 514:	8f 7e       	andi	r24, 0xEF	; 239
+ 516:	85 bb       	out	0x15, r24	; 21
+		D7(READBIT(data,3));
+ 518:	c3 ff       	sbrs	r28, 3
+ 51a:	04 c0       	rjmp	.+8      	; 0x524 <LCD_write_char+0xd2>
+ 51c:	85 b3       	in	r24, 0x15	; 21
+ 51e:	80 62       	ori	r24, 0x20	; 32
+ 520:	85 bb       	out	0x15, r24	; 21
+ 522:	03 c0       	rjmp	.+6      	; 0x52a <LCD_write_char+0xd8>
+ 524:	85 b3       	in	r24, 0x15	; 21
+ 526:	8f 7d       	andi	r24, 0xDF	; 223
+ 528:	85 bb       	out	0x15, r24	; 21
+		EN(1);
+ 52a:	85 b3       	in	r24, 0x15	; 21
+ 52c:	82 60       	ori	r24, 0x02	; 2
+ 52e:	85 bb       	out	0x15, r24	; 21
+ 530:	8f ec       	ldi	r24, 0xCF	; 207
+ 532:	97 e0       	ldi	r25, 0x07	; 7
+ 534:	01 97       	sbiw	r24, 0x01	; 1
+ 536:	f1 f7       	brne	.-4      	; 0x534 <LCD_write_char+0xe2>
+ 538:	00 c0       	rjmp	.+0      	; 0x53a <LCD_write_char+0xe8>
+ 53a:	00 00       	nop
+		_delay_ms(1);
+		EN(0);
+ 53c:	85 b3       	in	r24, 0x15	; 21
+ 53e:	8d 7f       	andi	r24, 0xFD	; 253
+ 540:	85 bb       	out	0x15, r24	; 21
+ 542:	8f ec       	ldi	r24, 0xCF	; 207
+ 544:	97 e0       	ldi	r25, 0x07	; 7
+ 546:	01 97       	sbiw	r24, 0x01	; 1
+ 548:	f1 f7       	brne	.-4      	; 0x546 <LCD_write_char+0xf4>
+ 54a:	00 c0       	rjmp	.+0      	; 0x54c <LCD_write_char+0xfa>
+ 54c:	00 00       	nop
+		_delay_ms(1);
+}
+ 54e:	cf 91       	pop	r28
+ 550:	08 95       	ret
+
+00000552 <LCD_write_string>:
+		LCD_write_command(0xC0+col-1);
+	_delay_ms(100);
+}
+
+void LCD_write_string(uint8_t *data , uint8_t row , uint8_t col)
+{
+ 552:	ff 92       	push	r15
+ 554:	0f 93       	push	r16
+ 556:	1f 93       	push	r17
+ 558:	cf 93       	push	r28
+ 55a:	df 93       	push	r29
+ 55c:	8c 01       	movw	r16, r24
+ 55e:	f6 2e       	mov	r15, r22
+	uint8_t i = 0;
+ 560:	c0 e0       	ldi	r28, 0x00	; 0
+	while(data[i] != '\0')
+ 562:	07 c0       	rjmp	.+14     	; 0x572 <LCD_write_string+0x20>
+		LCD_write_char(data[i++] , row ,col++);
+ 564:	d1 e0       	ldi	r29, 0x01	; 1
+ 566:	d4 0f       	add	r29, r20
+ 568:	cf 5f       	subi	r28, 0xFF	; 255
+ 56a:	6f 2d       	mov	r22, r15
+ 56c:	0e 94 29 02 	call	0x452	; 0x452 <LCD_write_char>
+ 570:	4d 2f       	mov	r20, r29
+}
+
+void LCD_write_string(uint8_t *data , uint8_t row , uint8_t col)
+{
+	uint8_t i = 0;
+	while(data[i] != '\0')
+ 572:	f8 01       	movw	r30, r16
+ 574:	ec 0f       	add	r30, r28
+ 576:	f1 1d       	adc	r31, r1
+ 578:	80 81       	ld	r24, Z
+ 57a:	81 11       	cpse	r24, r1
+ 57c:	f3 cf       	rjmp	.-26     	; 0x564 <LCD_write_string+0x12>
+		LCD_write_char(data[i++] , row ,col++);
+}
+ 57e:	df 91       	pop	r29
+ 580:	cf 91       	pop	r28
+ 582:	1f 91       	pop	r17
+ 584:	0f 91       	pop	r16
+ 586:	ff 90       	pop	r15
+ 588:	08 95       	ret
+
+0000058a <main>:
+
+#include "system.h"
+
+int main(void)
+{
+    system_init();
+ 58a:	0e 94 f9 03 	call	0x7f2	; 0x7f2 <system_init>
+    while (1) 
+    {
+		run_system();
+ 58e:	0e 94 38 04 	call	0x870	; 0x870 <run_system>
+ 592:	fd cf       	rjmp	.-6      	; 0x58e <main+0x4>
+
+00000594 <lenstr>:
+#include "EEPROM.h"
+
+//uint8_t position = 0;
+
+uint8_t lenstr(uint8_t *str)
+{
+ 594:	9c 01       	movw	r18, r24
+	uint8_t i = 0;
+ 596:	80 e0       	ldi	r24, 0x00	; 0
+	for(;str[i] != 0 ; i++);
+ 598:	01 c0       	rjmp	.+2      	; 0x59c <lenstr+0x8>
+ 59a:	8f 5f       	subi	r24, 0xFF	; 255
+ 59c:	f9 01       	movw	r30, r18
+ 59e:	e8 0f       	add	r30, r24
+ 5a0:	f1 1d       	adc	r31, r1
+ 5a2:	90 81       	ld	r25, Z
+ 5a4:	91 11       	cpse	r25, r1
+ 5a6:	f9 cf       	rjmp	.-14     	; 0x59a <lenstr+0x6>
+	return i ;
+}
+ 5a8:	08 95       	ret
+
+000005aa <comstr>:
+
+uint8_t comstr(uint8_t *str1 , uint8_t *str2 )
+{
+ 5aa:	ff 92       	push	r15
+ 5ac:	0f 93       	push	r16
+ 5ae:	1f 93       	push	r17
+ 5b0:	cf 93       	push	r28
+ 5b2:	df 93       	push	r29
+ 5b4:	ec 01       	movw	r28, r24
+ 5b6:	8b 01       	movw	r16, r22
+	uint8_t size1 = lenstr(str1) , size2 = lenstr(str2) ;  
+ 5b8:	0e 94 ca 02 	call	0x594	; 0x594 <lenstr>
+ 5bc:	f8 2e       	mov	r15, r24
+ 5be:	c8 01       	movw	r24, r16
+ 5c0:	0e 94 ca 02 	call	0x594	; 0x594 <lenstr>
+	if(size1 != size2)
+ 5c4:	f8 12       	cpse	r15, r24
+ 5c6:	13 c0       	rjmp	.+38     	; 0x5ee <comstr+0x44>
+ 5c8:	90 e0       	ldi	r25, 0x00	; 0
+ 5ca:	0d c0       	rjmp	.+26     	; 0x5e6 <comstr+0x3c>
+		return 0;
+	
+	uint8_t i = 0;		
+	for (;i<size2 ;i++)
+		if(str1[i] != str2[i])
+ 5cc:	29 2f       	mov	r18, r25
+ 5ce:	30 e0       	ldi	r19, 0x00	; 0
+ 5d0:	fe 01       	movw	r30, r28
+ 5d2:	e2 0f       	add	r30, r18
+ 5d4:	f3 1f       	adc	r31, r19
+ 5d6:	40 81       	ld	r20, Z
+ 5d8:	f8 01       	movw	r30, r16
+ 5da:	e2 0f       	add	r30, r18
+ 5dc:	f3 1f       	adc	r31, r19
+ 5de:	20 81       	ld	r18, Z
+ 5e0:	42 13       	cpse	r20, r18
+ 5e2:	07 c0       	rjmp	.+14     	; 0x5f2 <comstr+0x48>
+	uint8_t size1 = lenstr(str1) , size2 = lenstr(str2) ;  
+	if(size1 != size2)
+		return 0;
+	
+	uint8_t i = 0;		
+	for (;i<size2 ;i++)
+ 5e4:	9f 5f       	subi	r25, 0xFF	; 255
+ 5e6:	98 17       	cp	r25, r24
+ 5e8:	88 f3       	brcs	.-30     	; 0x5cc <comstr+0x22>
+		if(str1[i] != str2[i])
+			return 0;
+			
+	return 1;	
+ 5ea:	81 e0       	ldi	r24, 0x01	; 1
+ 5ec:	03 c0       	rjmp	.+6      	; 0x5f4 <comstr+0x4a>
+
+uint8_t comstr(uint8_t *str1 , uint8_t *str2 )
+{
+	uint8_t size1 = lenstr(str1) , size2 = lenstr(str2) ;  
+	if(size1 != size2)
+		return 0;
+ 5ee:	80 e0       	ldi	r24, 0x00	; 0
+ 5f0:	01 c0       	rjmp	.+2      	; 0x5f4 <comstr+0x4a>
+	
+	uint8_t i = 0;		
+	for (;i<size2 ;i++)
+		if(str1[i] != str2[i])
+			return 0;
+ 5f2:	80 e0       	ldi	r24, 0x00	; 0
+			
+	return 1;	
+}
+ 5f4:	df 91       	pop	r29
+ 5f6:	cf 91       	pop	r28
+ 5f8:	1f 91       	pop	r17
+ 5fa:	0f 91       	pop	r16
+ 5fc:	ff 90       	pop	r15
+ 5fe:	08 95       	ret
+
+00000600 <RESTOR_PASSWORD>:
+
+void RESTOR_PASSWORD(uint8_t *arr)
+{
+ 600:	ef 92       	push	r14
+ 602:	ff 92       	push	r15
+ 604:	0f 93       	push	r16
+ 606:	1f 93       	push	r17
+ 608:	cf 93       	push	r28
+ 60a:	7c 01       	movw	r14, r24
+	uint8_t i = 0;
+ 60c:	c0 e0       	ldi	r28, 0x00	; 0
+	for( ; i<PASSOWRD_DIGITS ; i++)
+ 60e:	0a c0       	rjmp	.+20     	; 0x624 <RESTOR_PASSWORD+0x24>
+		arr[i] = EEPROM_read(PASSWORD_save_address+i);
+ 610:	87 01       	movw	r16, r14
+ 612:	0c 0f       	add	r16, r28
+ 614:	11 1d       	adc	r17, r1
+ 616:	82 e3       	ldi	r24, 0x32	; 50
+ 618:	8c 0f       	add	r24, r28
+ 61a:	0e 94 75 00 	call	0xea	; 0xea <EEPROM_read>
+ 61e:	f8 01       	movw	r30, r16
+ 620:	80 83       	st	Z, r24
+}
+
+void RESTOR_PASSWORD(uint8_t *arr)
+{
+	uint8_t i = 0;
+	for( ; i<PASSOWRD_DIGITS ; i++)
+ 622:	cf 5f       	subi	r28, 0xFF	; 255
+ 624:	c4 30       	cpi	r28, 0x04	; 4
+ 626:	a0 f3       	brcs	.-24     	; 0x610 <RESTOR_PASSWORD+0x10>
+		arr[i] = EEPROM_read(PASSWORD_save_address+i);
+}
+ 628:	cf 91       	pop	r28
+ 62a:	1f 91       	pop	r17
+ 62c:	0f 91       	pop	r16
+ 62e:	ff 90       	pop	r15
+ 630:	ef 90       	pop	r14
+ 632:	08 95       	ret
+
+00000634 <CHECK_entered_password>:
+	else
+		RESET_password(arr);
+}
+
+void CHECK_entered_password(uint8_t *arr , uint8_t *state)
+{
+ 634:	cf 92       	push	r12
+ 636:	df 92       	push	r13
+ 638:	ef 92       	push	r14
+ 63a:	ff 92       	push	r15
+ 63c:	0f 93       	push	r16
+ 63e:	1f 93       	push	r17
+ 640:	cf 93       	push	r28
+ 642:	df 93       	push	r29
+ 644:	7c 01       	movw	r14, r24
+ 646:	6b 01       	movw	r12, r22
+	uint8_t i = 0 , count = 0;
+ 648:	00 e0       	ldi	r16, 0x00	; 0
+ 64a:	c0 e0       	ldi	r28, 0x00	; 0
+	uint8_t entered;
+	while(i < 4)
+ 64c:	16 c0       	rjmp	.+44     	; 0x67a <CHECK_entered_password+0x46>
+	{	entered = KEYPAD_read();
+ 64e:	0e 94 aa 00 	call	0x154	; 0x154 <KEYPAD_read>
+ 652:	d8 2f       	mov	r29, r24
+		if(entered == '@') continue;
+ 654:	80 34       	cpi	r24, 0x40	; 64
+ 656:	89 f0       	breq	.+34     	; 0x67a <CHECK_entered_password+0x46>
+		LCD_write_char('*',2,1+i);
+ 658:	11 e0       	ldi	r17, 0x01	; 1
+ 65a:	1c 0f       	add	r17, r28
+ 65c:	41 2f       	mov	r20, r17
+ 65e:	62 e0       	ldi	r22, 0x02	; 2
+ 660:	8a e2       	ldi	r24, 0x2A	; 42
+ 662:	0e 94 29 02 	call	0x452	; 0x452 <LCD_write_char>
+		if(entered == arr[i++])
+ 666:	f7 01       	movw	r30, r14
+ 668:	ec 0f       	add	r30, r28
+ 66a:	f1 1d       	adc	r31, r1
+ 66c:	80 81       	ld	r24, Z
+ 66e:	d8 13       	cpse	r29, r24
+ 670:	03 c0       	rjmp	.+6      	; 0x678 <CHECK_entered_password+0x44>
+			count++;
+ 672:	0f 5f       	subi	r16, 0xFF	; 255
+	uint8_t entered;
+	while(i < 4)
+	{	entered = KEYPAD_read();
+		if(entered == '@') continue;
+		LCD_write_char('*',2,1+i);
+		if(entered == arr[i++])
+ 674:	c1 2f       	mov	r28, r17
+ 676:	01 c0       	rjmp	.+2      	; 0x67a <CHECK_entered_password+0x46>
+ 678:	c1 2f       	mov	r28, r17
+
+void CHECK_entered_password(uint8_t *arr , uint8_t *state)
+{
+	uint8_t i = 0 , count = 0;
+	uint8_t entered;
+	while(i < 4)
+ 67a:	c4 30       	cpi	r28, 0x04	; 4
+ 67c:	40 f3       	brcs	.-48     	; 0x64e <CHECK_entered_password+0x1a>
+		if(entered == '@') continue;
+		LCD_write_char('*',2,1+i);
+		if(entered == arr[i++])
+			count++;
+	}
+	if (count == 4)
+ 67e:	04 30       	cpi	r16, 0x04	; 4
+ 680:	21 f4       	brne	.+8      	; 0x68a <CHECK_entered_password+0x56>
+		*state = OPEN_LOCKER;
+ 682:	82 e0       	ldi	r24, 0x02	; 2
+ 684:	f6 01       	movw	r30, r12
+ 686:	80 83       	st	Z, r24
+ 688:	14 c0       	rjmp	.+40     	; 0x6b2 <CHECK_entered_password+0x7e>
+	else
+	{	LCD_clear();
+ 68a:	0e 94 02 02 	call	0x404	; 0x404 <LCD_clear>
+		*state = CLOSE_LOCKER;
+ 68e:	83 e0       	ldi	r24, 0x03	; 3
+ 690:	f6 01       	movw	r30, r12
+ 692:	80 83       	st	Z, r24
+		LCD_write_string("Try Again",1,1);
+ 694:	41 e0       	ldi	r20, 0x01	; 1
+ 696:	61 e0       	ldi	r22, 0x01	; 1
+ 698:	80 e7       	ldi	r24, 0x70	; 112
+ 69a:	90 e0       	ldi	r25, 0x00	; 0
+ 69c:	0e 94 a9 02 	call	0x552	; 0x552 <LCD_write_string>
+ 6a0:	ff ef       	ldi	r31, 0xFF	; 255
+ 6a2:	20 e7       	ldi	r18, 0x70	; 112
+ 6a4:	82 e0       	ldi	r24, 0x02	; 2
+ 6a6:	f1 50       	subi	r31, 0x01	; 1
+ 6a8:	20 40       	sbci	r18, 0x00	; 0
+ 6aa:	80 40       	sbci	r24, 0x00	; 0
+ 6ac:	e1 f7       	brne	.-8      	; 0x6a6 <CHECK_entered_password+0x72>
+ 6ae:	00 c0       	rjmp	.+0      	; 0x6b0 <CHECK_entered_password+0x7c>
+ 6b0:	00 00       	nop
+		_delay_ms(100);
+	}
+}
+ 6b2:	df 91       	pop	r29
+ 6b4:	cf 91       	pop	r28
+ 6b6:	1f 91       	pop	r17
+ 6b8:	0f 91       	pop	r16
+ 6ba:	ff 90       	pop	r15
+ 6bc:	ef 90       	pop	r14
+ 6be:	df 90       	pop	r13
+ 6c0:	cf 90       	pop	r12
+ 6c2:	08 95       	ret
+
+000006c4 <RESET_password>:
+
+void RESET_password(uint8_t *arr)
+{
+ 6c4:	cf 93       	push	r28
+ 6c6:	df 93       	push	r29
+ 6c8:	ec 01       	movw	r28, r24
+	uint8_t i = 0;
+	EEPROM_write_string("nooo",PASSWORD_check_address);
+ 6ca:	6a e0       	ldi	r22, 0x0A	; 10
+ 6cc:	8a e7       	ldi	r24, 0x7A	; 122
+ 6ce:	90 e0       	ldi	r25, 0x00	; 0
+ 6d0:	0e 94 59 00 	call	0xb2	; 0xb2 <EEPROM_write_string>
+	}
+}
+
+void RESET_password(uint8_t *arr)
+{
+	uint8_t i = 0;
+ 6d4:	80 e0       	ldi	r24, 0x00	; 0
+	EEPROM_write_string("nooo",PASSWORD_check_address);
+	for(;i < PASSOWRD_DIGITS; i++)
+ 6d6:	06 c0       	rjmp	.+12     	; 0x6e4 <RESET_password+0x20>
+		arr[i] = '0';
+ 6d8:	fe 01       	movw	r30, r28
+ 6da:	e8 0f       	add	r30, r24
+ 6dc:	f1 1d       	adc	r31, r1
+ 6de:	90 e3       	ldi	r25, 0x30	; 48
+ 6e0:	90 83       	st	Z, r25
+
+void RESET_password(uint8_t *arr)
+{
+	uint8_t i = 0;
+	EEPROM_write_string("nooo",PASSWORD_check_address);
+	for(;i < PASSOWRD_DIGITS; i++)
+ 6e2:	8f 5f       	subi	r24, 0xFF	; 255
+ 6e4:	84 30       	cpi	r24, 0x04	; 4
+ 6e6:	c0 f3       	brcs	.-16     	; 0x6d8 <RESET_password+0x14>
+		arr[i] = '0';
+}
+ 6e8:	df 91       	pop	r29
+ 6ea:	cf 91       	pop	r28
+ 6ec:	08 95       	ret
+
+000006ee <SEARCH_PASSWORD>:
+	for( ; i<PASSOWRD_DIGITS ; i++)
+		arr[i] = EEPROM_read(PASSWORD_save_address+i);
+}
+
+void SEARCH_PASSWORD(uint8_t *arr)
+{
+ 6ee:	ef 92       	push	r14
+ 6f0:	ff 92       	push	r15
+ 6f2:	0f 93       	push	r16
+ 6f4:	1f 93       	push	r17
+ 6f6:	cf 93       	push	r28
+ 6f8:	df 93       	push	r29
+ 6fa:	00 d0       	rcall	.+0      	; 0x6fc <SEARCH_PASSWORD+0xe>
+ 6fc:	00 d0       	rcall	.+0      	; 0x6fe <SEARCH_PASSWORD+0x10>
+ 6fe:	1f 92       	push	r1
+ 700:	cd b7       	in	r28, 0x3d	; 61
+ 702:	de b7       	in	r29, 0x3e	; 62
+ 704:	7c 01       	movw	r14, r24
+	uint8_t flag[5]={0};
+ 706:	8e 01       	movw	r16, r28
+ 708:	0f 5f       	subi	r16, 0xFF	; 255
+ 70a:	1f 4f       	sbci	r17, 0xFF	; 255
+ 70c:	85 e0       	ldi	r24, 0x05	; 5
+ 70e:	f8 01       	movw	r30, r16
+ 710:	11 92       	st	Z+, r1
+ 712:	8a 95       	dec	r24
+ 714:	e9 f7       	brne	.-6      	; 0x710 <SEARCH_PASSWORD+0x22>
+	EEPROM_read_string(flag , PASSWORD_check_address);
+ 716:	6a e0       	ldi	r22, 0x0A	; 10
+ 718:	c8 01       	movw	r24, r16
+ 71a:	0e 94 7f 00 	call	0xfe	; 0xfe <EEPROM_read_string>
+	if(comstr(flag , "first"))
+ 71e:	6f e7       	ldi	r22, 0x7F	; 127
+ 720:	70 e0       	ldi	r23, 0x00	; 0
+ 722:	c8 01       	movw	r24, r16
+ 724:	0e 94 d5 02 	call	0x5aa	; 0x5aa <comstr>
+ 728:	88 23       	and	r24, r24
+ 72a:	21 f0       	breq	.+8      	; 0x734 <SEARCH_PASSWORD+0x46>
+		RESTOR_PASSWORD(arr);
+ 72c:	c7 01       	movw	r24, r14
+ 72e:	0e 94 00 03 	call	0x600	; 0x600 <RESTOR_PASSWORD>
+ 732:	03 c0       	rjmp	.+6      	; 0x73a <SEARCH_PASSWORD+0x4c>
+	else
+		RESET_password(arr);
+ 734:	c7 01       	movw	r24, r14
+ 736:	0e 94 62 03 	call	0x6c4	; 0x6c4 <RESET_password>
+}
+ 73a:	0f 90       	pop	r0
+ 73c:	0f 90       	pop	r0
+ 73e:	0f 90       	pop	r0
+ 740:	0f 90       	pop	r0
+ 742:	0f 90       	pop	r0
+ 744:	df 91       	pop	r29
+ 746:	cf 91       	pop	r28
+ 748:	1f 91       	pop	r17
+ 74a:	0f 91       	pop	r16
+ 74c:	ff 90       	pop	r15
+ 74e:	ef 90       	pop	r14
+ 750:	08 95       	ret
+
+00000752 <new_password>:
+	for(;i < PASSOWRD_DIGITS; i++)
+		arr[i] = '0';
+}
+
+void new_password(uint8_t *arr)
+{
+ 752:	0f 93       	push	r16
+ 754:	1f 93       	push	r17
+ 756:	cf 93       	push	r28
+ 758:	df 93       	push	r29
+ 75a:	8c 01       	movw	r16, r24
+	uint8_t digit_value = 0 , index = 0;
+ 75c:	c0 e0       	ldi	r28, 0x00	; 0
+		
+	while (index < PASSOWRD_DIGITS)
+ 75e:	12 c0       	rjmp	.+36     	; 0x784 <new_password+0x32>
+	{	digit_value = KEYPAD_read();
+ 760:	0e 94 aa 00 	call	0x154	; 0x154 <KEYPAD_read>
+		if (digit_value>= '0' && digit_value<= '9')
+ 764:	90 ed       	ldi	r25, 0xD0	; 208
+ 766:	98 0f       	add	r25, r24
+ 768:	9a 30       	cpi	r25, 0x0A	; 10
+ 76a:	60 f4       	brcc	.+24     	; 0x784 <new_password+0x32>
+		{	arr[index] = digit_value;
+ 76c:	f8 01       	movw	r30, r16
+ 76e:	ec 0f       	add	r30, r28
+ 770:	f1 1d       	adc	r31, r1
+ 772:	80 83       	st	Z, r24
+			LCD_write_char(digit_value,2,2+index++);
+ 774:	d1 e0       	ldi	r29, 0x01	; 1
+ 776:	dc 0f       	add	r29, r28
+ 778:	42 e0       	ldi	r20, 0x02	; 2
+ 77a:	4c 0f       	add	r20, r28
+ 77c:	62 e0       	ldi	r22, 0x02	; 2
+ 77e:	0e 94 29 02 	call	0x452	; 0x452 <LCD_write_char>
+ 782:	cd 2f       	mov	r28, r29
+
+void new_password(uint8_t *arr)
+{
+	uint8_t digit_value = 0 , index = 0;
+		
+	while (index < PASSOWRD_DIGITS)
+ 784:	c4 30       	cpi	r28, 0x04	; 4
+ 786:	60 f3       	brcs	.-40     	; 0x760 <new_password+0xe>
+		if (digit_value>= '0' && digit_value<= '9')
+		{	arr[index] = digit_value;
+			LCD_write_char(digit_value,2,2+index++);
+		}
+	}
+}
+ 788:	df 91       	pop	r29
+ 78a:	cf 91       	pop	r28
+ 78c:	1f 91       	pop	r17
+ 78e:	0f 91       	pop	r16
+ 790:	08 95       	ret
+
+00000792 <SAVE_paswword>:
+
+void SAVE_paswword(uint8_t *new,uint8_t *pass)
+{
+ 792:	af 92       	push	r10
+ 794:	bf 92       	push	r11
+ 796:	cf 92       	push	r12
+ 798:	df 92       	push	r13
+ 79a:	ef 92       	push	r14
+ 79c:	ff 92       	push	r15
+ 79e:	0f 93       	push	r16
+ 7a0:	1f 93       	push	r17
+ 7a2:	cf 93       	push	r28
+ 7a4:	5c 01       	movw	r10, r24
+ 7a6:	6b 01       	movw	r12, r22
+	uint8_t i = 0;
+	EEPROM_write_string("first",PASSWORD_check_address);
+ 7a8:	6a e0       	ldi	r22, 0x0A	; 10
+ 7aa:	8f e7       	ldi	r24, 0x7F	; 127
+ 7ac:	90 e0       	ldi	r25, 0x00	; 0
+ 7ae:	0e 94 59 00 	call	0xb2	; 0xb2 <EEPROM_write_string>
+	}
+}
+
+void SAVE_paswword(uint8_t *new,uint8_t *pass)
+{
+	uint8_t i = 0;
+ 7b2:	c0 e0       	ldi	r28, 0x00	; 0
+	EEPROM_write_string("first",PASSWORD_check_address);
+	for( ; i<PASSOWRD_DIGITS ; i++)
+ 7b4:	12 c0       	rjmp	.+36     	; 0x7da <SAVE_paswword+0x48>
+	{	EEPROM_write(new[i] , PASSWORD_save_address+i);
+ 7b6:	0c 2f       	mov	r16, r28
+ 7b8:	10 e0       	ldi	r17, 0x00	; 0
+ 7ba:	75 01       	movw	r14, r10
+ 7bc:	e0 0e       	add	r14, r16
+ 7be:	f1 1e       	adc	r15, r17
+ 7c0:	62 e3       	ldi	r22, 0x32	; 50
+ 7c2:	6c 0f       	add	r22, r28
+ 7c4:	d7 01       	movw	r26, r14
+ 7c6:	8c 91       	ld	r24, X
+ 7c8:	0e 94 49 00 	call	0x92	; 0x92 <EEPROM_write>
+		pass[i] = new[i];
+ 7cc:	f6 01       	movw	r30, r12
+ 7ce:	e0 0f       	add	r30, r16
+ 7d0:	f1 1f       	adc	r31, r17
+ 7d2:	d7 01       	movw	r26, r14
+ 7d4:	8c 91       	ld	r24, X
+ 7d6:	80 83       	st	Z, r24
+
+void SAVE_paswword(uint8_t *new,uint8_t *pass)
+{
+	uint8_t i = 0;
+	EEPROM_write_string("first",PASSWORD_check_address);
+	for( ; i<PASSOWRD_DIGITS ; i++)
+ 7d8:	cf 5f       	subi	r28, 0xFF	; 255
+ 7da:	c4 30       	cpi	r28, 0x04	; 4
+ 7dc:	60 f3       	brcs	.-40     	; 0x7b6 <SAVE_paswword+0x24>
+	{	EEPROM_write(new[i] , PASSWORD_save_address+i);
+		pass[i] = new[i];
+	}
+}
+ 7de:	cf 91       	pop	r28
+ 7e0:	1f 91       	pop	r17
+ 7e2:	0f 91       	pop	r16
+ 7e4:	ff 90       	pop	r15
+ 7e6:	ef 90       	pop	r14
+ 7e8:	df 90       	pop	r13
+ 7ea:	cf 90       	pop	r12
+ 7ec:	bf 90       	pop	r11
+ 7ee:	af 90       	pop	r10
+ 7f0:	08 95       	ret
+
+000007f2 <system_init>:
+
+lockerSystem locker ;
+
+void system_init(void)
+{
+	LCD_init();
+ 7f2:	0e 94 cb 01 	call	0x396	; 0x396 <LCD_init>
+	KEYPAD_init();
+ 7f6:	0e 94 a0 00 	call	0x140	; 0x140 <KEYPAD_init>
+	BUZZER_init();
+ 7fa:	8a b3       	in	r24, 0x1a	; 26
+ 7fc:	82 60       	ori	r24, 0x02	; 2
+ 7fe:	8a bb       	out	0x1a, r24	; 26
+	LOCKER_init();
+ 800:	8a b3       	in	r24, 0x1a	; 26
+ 802:	84 60       	ori	r24, 0x04	; 4
+ 804:	8a bb       	out	0x1a, r24	; 26
+ 	SEARCH_PASSWORD(locker.password);
+ 806:	80 ec       	ldi	r24, 0xC0	; 192
+ 808:	90 e0       	ldi	r25, 0x00	; 0
+ 80a:	0e 94 77 03 	call	0x6ee	; 0x6ee <SEARCH_PASSWORD>
+ 	locker.state = close;
+ 80e:	ee eb       	ldi	r30, 0xBE	; 190
+ 810:	f0 e0       	ldi	r31, 0x00	; 0
+ 812:	83 e0       	ldi	r24, 0x03	; 3
+ 814:	80 83       	st	Z, r24
+ 	locker.clear = 1;
+ 816:	81 e0       	ldi	r24, 0x01	; 1
+ 818:	81 83       	std	Z+1, r24	; 0x01
+	LOCKER(0);
+ 81a:	8b b3       	in	r24, 0x1b	; 27
+ 81c:	8b 7f       	andi	r24, 0xFB	; 251
+ 81e:	8b bb       	out	0x1b, r24	; 27
+ 820:	08 95       	ret
+
+00000822 <check_state>:
+}
+
+void check_state(void)
+{
+	static uint8_t count = 0;
+	uint8_t symbol = KEYPAD_read();
+ 822:	0e 94 aa 00 	call	0x154	; 0x154 <KEYPAD_read>
+	switch(symbol)
+ 826:	8f 32       	cpi	r24, 0x2F	; 47
+ 828:	29 f0       	breq	.+10     	; 0x834 <check_state+0x12>
+ 82a:	80 33       	cpi	r24, 0x30	; 48
+ 82c:	99 f0       	breq	.+38     	; 0x854 <check_state+0x32>
+ 82e:	8a 32       	cpi	r24, 0x2A	; 42
+ 830:	f1 f4       	brne	.+60     	; 0x86e <__stack+0xf>
+ 832:	08 c0       	rjmp	.+16     	; 0x844 <check_state+0x22>
+	{
+		case '/':
+			locker.state = changePassword ;
+ 834:	81 e0       	ldi	r24, 0x01	; 1
+ 836:	80 93 be 00 	sts	0x00BE, r24	; 0x8000be <locker>
+			count = 0;
+ 83a:	10 92 bd 00 	sts	0x00BD, r1	; 0x8000bd <count.1818>
+			LCD_clear();
+ 83e:	0e 94 02 02 	call	0x404	; 0x404 <LCD_clear>
+		break;
+ 842:	08 95       	ret
+		
+		case '*':
+			locker.state = close ;
+ 844:	83 e0       	ldi	r24, 0x03	; 3
+ 846:	80 93 be 00 	sts	0x00BE, r24	; 0x8000be <locker>
+			count = 0;
+ 84a:	10 92 bd 00 	sts	0x00BD, r1	; 0x8000bd <count.1818>
+			LCD_clear();
+ 84e:	0e 94 02 02 	call	0x404	; 0x404 <LCD_clear>
+		break;
+ 852:	08 95       	ret
+		
+		case '0':
+			count++;
+ 854:	80 91 bd 00 	lds	r24, 0x00BD	; 0x8000bd <count.1818>
+ 858:	8f 5f       	subi	r24, 0xFF	; 255
+ 85a:	80 93 bd 00 	sts	0x00BD, r24	; 0x8000bd <count.1818>
+			if (count == 10)
+ 85e:	8a 30       	cpi	r24, 0x0A	; 10
+ 860:	31 f4       	brne	.+12     	; 0x86e <__stack+0xf>
+			{	locker.state = reset ;
+ 862:	10 92 be 00 	sts	0x00BE, r1	; 0x8000be <locker>
+				count = 0;
+ 866:	10 92 bd 00 	sts	0x00BD, r1	; 0x8000bd <count.1818>
+				LCD_clear();
+ 86a:	0e 94 02 02 	call	0x404	; 0x404 <LCD_clear>
+ 86e:	08 95       	ret
+
+00000870 <run_system>:
+
+
+void run_system(void)
+{
+
+	switch(locker.state)
+ 870:	80 91 be 00 	lds	r24, 0x00BE	; 0x8000be <locker>
+ 874:	82 30       	cpi	r24, 0x02	; 2
+ 876:	f1 f0       	breq	.+60     	; 0x8b4 <run_system+0x44>
+ 878:	30 f4       	brcc	.+12     	; 0x886 <run_system+0x16>
+ 87a:	88 23       	and	r24, r24
+ 87c:	09 f4       	brne	.+2      	; 0x880 <run_system+0x10>
+ 87e:	5d c0       	rjmp	.+186    	; 0x93a <run_system+0xca>
+ 880:	81 30       	cpi	r24, 0x01	; 1
+ 882:	21 f1       	breq	.+72     	; 0x8cc <run_system+0x5c>
+ 884:	08 95       	ret
+ 886:	83 30       	cpi	r24, 0x03	; 3
+ 888:	19 f0       	breq	.+6      	; 0x890 <run_system+0x20>
+ 88a:	84 30       	cpi	r24, 0x04	; 4
+ 88c:	c1 f1       	breq	.+112    	; 0x8fe <run_system+0x8e>
+ 88e:	08 95       	ret
+	{
+		case close:
+			LOCKER(0);
+ 890:	8b b3       	in	r24, 0x1b	; 27
+ 892:	8b 7f       	andi	r24, 0xFB	; 251
+ 894:	8b bb       	out	0x1b, r24	; 27
+			LCD_write_string("Enter password",1,1);
+ 896:	41 e0       	ldi	r20, 0x01	; 1
+ 898:	61 e0       	ldi	r22, 0x01	; 1
+ 89a:	85 e8       	ldi	r24, 0x85	; 133
+ 89c:	90 e0       	ldi	r25, 0x00	; 0
+ 89e:	0e 94 a9 02 	call	0x552	; 0x552 <LCD_write_string>
+			CHECK_entered_password(locker.password ,&locker.state);
+ 8a2:	6e eb       	ldi	r22, 0xBE	; 190
+ 8a4:	70 e0       	ldi	r23, 0x00	; 0
+ 8a6:	80 ec       	ldi	r24, 0xC0	; 192
+ 8a8:	90 e0       	ldi	r25, 0x00	; 0
+ 8aa:	0e 94 1a 03 	call	0x634	; 0x634 <CHECK_entered_password>
+			LCD_clear();
+ 8ae:	0e 94 02 02 	call	0x404	; 0x404 <LCD_clear>
+		break;
+ 8b2:	08 95       	ret
+		
+		case open:
+			LOCKER(1);
+ 8b4:	8b b3       	in	r24, 0x1b	; 27
+ 8b6:	84 60       	ori	r24, 0x04	; 4
+ 8b8:	8b bb       	out	0x1b, r24	; 27
+			LCD_write_string("open",1,1);
+ 8ba:	41 e0       	ldi	r20, 0x01	; 1
+ 8bc:	61 e0       	ldi	r22, 0x01	; 1
+ 8be:	84 e9       	ldi	r24, 0x94	; 148
+ 8c0:	90 e0       	ldi	r25, 0x00	; 0
+ 8c2:	0e 94 a9 02 	call	0x552	; 0x552 <LCD_write_string>
+			check_state();
+ 8c6:	0e 94 11 04 	call	0x822	; 0x822 <check_state>
+		break;
+ 8ca:	08 95       	ret
+		
+		case changePassword:
+			LCD_write_string("New password",1,1);
+ 8cc:	41 e0       	ldi	r20, 0x01	; 1
+ 8ce:	61 e0       	ldi	r22, 0x01	; 1
+ 8d0:	89 e9       	ldi	r24, 0x99	; 153
+ 8d2:	90 e0       	ldi	r25, 0x00	; 0
+ 8d4:	0e 94 a9 02 	call	0x552	; 0x552 <LCD_write_string>
+			new_password(locker.NewPassword);
+ 8d8:	84 ec       	ldi	r24, 0xC4	; 196
+ 8da:	90 e0       	ldi	r25, 0x00	; 0
+ 8dc:	0e 94 a9 03 	call	0x752	; 0x752 <new_password>
+			locker.state = savePassword ;
+ 8e0:	84 e0       	ldi	r24, 0x04	; 4
+ 8e2:	80 93 be 00 	sts	0x00BE, r24	; 0x8000be <locker>
+ 8e6:	2f ef       	ldi	r18, 0xFF	; 255
+ 8e8:	80 e7       	ldi	r24, 0x70	; 112
+ 8ea:	92 e0       	ldi	r25, 0x02	; 2
+ 8ec:	21 50       	subi	r18, 0x01	; 1
+ 8ee:	80 40       	sbci	r24, 0x00	; 0
+ 8f0:	90 40       	sbci	r25, 0x00	; 0
+ 8f2:	e1 f7       	brne	.-8      	; 0x8ec <run_system+0x7c>
+ 8f4:	00 c0       	rjmp	.+0      	; 0x8f6 <run_system+0x86>
+ 8f6:	00 00       	nop
+			_delay_ms(100);
+			LCD_clear();
+ 8f8:	0e 94 02 02 	call	0x404	; 0x404 <LCD_clear>
+		break;
+ 8fc:	08 95       	ret
+		
+		case savePassword:
+			LCD_write_string("save ?",1,1);
+ 8fe:	41 e0       	ldi	r20, 0x01	; 1
+ 900:	61 e0       	ldi	r22, 0x01	; 1
+ 902:	86 ea       	ldi	r24, 0xA6	; 166
+ 904:	90 e0       	ldi	r25, 0x00	; 0
+ 906:	0e 94 a9 02 	call	0x552	; 0x552 <LCD_write_string>
+			uint8_t symbol = KEYPAD_read();
+ 90a:	0e 94 aa 00 	call	0x154	; 0x154 <KEYPAD_read>
+			if(symbol == '/')
+ 90e:	8f 32       	cpi	r24, 0x2F	; 47
+ 910:	61 f4       	brne	.+24     	; 0x92a <run_system+0xba>
+			{	SAVE_paswword(locker.NewPassword,locker.password);
+ 912:	60 ec       	ldi	r22, 0xC0	; 192
+ 914:	70 e0       	ldi	r23, 0x00	; 0
+ 916:	84 ec       	ldi	r24, 0xC4	; 196
+ 918:	90 e0       	ldi	r25, 0x00	; 0
+ 91a:	0e 94 c9 03 	call	0x792	; 0x792 <SAVE_paswword>
+				locker.state = open;
+ 91e:	82 e0       	ldi	r24, 0x02	; 2
+ 920:	80 93 be 00 	sts	0x00BE, r24	; 0x8000be <locker>
+				LCD_clear();
+ 924:	0e 94 02 02 	call	0x404	; 0x404 <LCD_clear>
+ 928:	08 95       	ret
+			}
+			else if(symbol == '*')
+ 92a:	8a 32       	cpi	r24, 0x2A	; 42
+ 92c:	a9 f4       	brne	.+42     	; 0x958 <run_system+0xe8>
+			{	locker.state = open;
+ 92e:	82 e0       	ldi	r24, 0x02	; 2
+ 930:	80 93 be 00 	sts	0x00BE, r24	; 0x8000be <locker>
+				LCD_clear();
+ 934:	0e 94 02 02 	call	0x404	; 0x404 <LCD_clear>
+ 938:	08 95       	ret
+			}
+		break;
+		
+		case reset:
+			LCD_write_string("reset password",1,1);
+ 93a:	41 e0       	ldi	r20, 0x01	; 1
+ 93c:	61 e0       	ldi	r22, 0x01	; 1
+ 93e:	8d ea       	ldi	r24, 0xAD	; 173
+ 940:	90 e0       	ldi	r25, 0x00	; 0
+ 942:	0e 94 a9 02 	call	0x552	; 0x552 <LCD_write_string>
+			RESET_password(locker.password);
+ 946:	80 ec       	ldi	r24, 0xC0	; 192
+ 948:	90 e0       	ldi	r25, 0x00	; 0
+ 94a:	0e 94 62 03 	call	0x6c4	; 0x6c4 <RESET_password>
+			locker.state = open;
+ 94e:	82 e0       	ldi	r24, 0x02	; 2
+ 950:	80 93 be 00 	sts	0x00BE, r24	; 0x8000be <locker>
+			LCD_clear();
+ 954:	0e 94 02 02 	call	0x404	; 0x404 <LCD_clear>
+ 958:	08 95       	ret
+
+0000095a <_exit>:
+ 95a:	f8 94       	cli
+
+0000095c <__stop_program>:
+ 95c:	ff cf       	rjmp	.-2      	; 0x95c <__stop_program>
